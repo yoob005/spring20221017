@@ -4,54 +4,78 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.zerock.mapper.lecture.Mapper10">
-	
+
 	<delete id="removeCustomer">
-		DELETE FROM Customers 
+		DELETE FROM Customers
 		WHERE CustomerID = 91
 	</delete>
-	
+
 	<delete id="removeEmployee">
 		DELETE FROM Employees
 		WHERE EmployeeId = 1
 	</delete>
-	
+
 	<delete id="removeCustomerById">
-	DELETE FROM Customers
-	WHERE CustomerID = #{id}
-	
+		DELETE FROM Customers
+		WHERE CustomerID = #{id}
+
 	</delete>
-	
+
 	<delete id="removeEmployeeById">
 		DELETE FROM Employees
 		WHERE EmployeeID = #{id}
 	</delete>
-	
+
 	<insert id="addCustomer">
 		INSERT INTO Customers
-		(CustomerName, ContactName, Address, City, PostalCode, Country)
-		VALUES ('SON', 'HM','LONDON','LONDON','111111','UK') 
-	
+		(CustomerName, ContactName,
+		Address, City, PostalCode, Country)
+		VALUES ('SON',
+		'HM','LONDON','LONDON','111111','UK')
+
 	</insert>
-	
+
 	<insert id="addSupplier">
 		INSERT INTO Suppliers
-		(SupplierName, ContactName, Address, City, PostalCode, Country, Phone)
-		VALUES ('CHA', 'BUM', 'Seoul', 'Seoul', '1111', 'Korea','(010)0000-0000')
+		(SupplierName, ContactName,
+		Address, City, PostalCode, Country, Phone)
+		VALUES ('CHA', 'BUM',
+		'Seoul', 'Seoul', '1111', 'Korea','(010)0000-0000')
 	</insert>
 	<insert id="insertCustomer">
-	INSERT INTO Customers
-	(CustomerName, ContactName, Address, City, PostalCode, Country)
-	VALUES
-	(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})	
+		INSERT INTO Customers
+		(CustomerName, ContactName,
+		Address, City, PostalCode, Country)
+		VALUES
+		(#{name}, #{contactName},
+		#{address}, #{city}, #{postalCode}, #{country})
 	</insert>
-	
+
 	<insert id="insertSupplier">
 		INSERT INTO Suppliers
-		(SupplierName, ContactName, Address, City, PostalCode, Country, Phone)
+		(SupplierName, ContactName,
+		Address, City, PostalCode, Country, Phone)
 		VALUES
-		(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country}, #{phone})
+		(#{name},
+		#{contactName}, #{address}, #{city}, #{postalCode}, #{country},
+		#{phone})
 	</insert>
-	
+
+	<insert id="insertCustomerAndGetKey" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO Customers
+		(CustomerName, ContactName, Address, City, PostalCode, Country)
+		VALUES
+		(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})
+	</insert>
+
+	<insert id="insertSupplierAndGetKey" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO Suppliers
+		(SupplierName, ContactName,Address, City, PostalCode,Country, Phone)
+		VALUES (#{name},#{contactName}, #{address}, #{city},#{postalCode}, #{country},#{phone})
+	</insert>
+
 </mapper>
 
 
