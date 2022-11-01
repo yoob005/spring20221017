@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix= "c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>     
+<%@ taglib prefix= "c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,36 +11,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-	<my:testNavBar></my:testNavBar>
-	<h3>연습 게시판 목록</h3>
-		<table class="table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일시</th>
-			</tr>
-		</thead>
-		<tboady>
-			<c:forEach items="${boardList}" var="board">
-				<tr>
-					<td>${board.id }</td>
-					<td>
-						<c:url value="/board/testGet" var="getLink">
-							<c:param name="id" value="${board.id }"></c:param>	
-						</c:url>
-						<a href="${getLink}"> 
-							${board.title }
-						</a>
-					</td>
-					<td>${board.writer }</td>
-					<td>${board.inserted }</td>
-				</tr>
-			
-			</c:forEach>
-		</tboady>
-	</table>
+	<h1>${board.id}번 게시물 수정</h1>
+
+	<form action="" method="post">
+		제목 <input type="text" value="${board.title }"> <br>
+		본문 <textarea>${board.content }</textarea> <br>
+		작성자 <input type="text" value="${board.writer }" readonly> <br>
+		<input type="submit" value="수정하기">
+		
+	</form>
+	
+	
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

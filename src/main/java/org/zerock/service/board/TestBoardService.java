@@ -25,5 +25,10 @@ public class TestBoardService {
 	public TestBoardDto get(int id) {
 		return mapper.select(id);
 	}
+
+	public int update(TestBoardDto board) {
+		
+		return mapper.update(board);
+	}
 	
 }

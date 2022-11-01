@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.board.TestBoardDto;
 import org.zerock.service.board.TestBoardService;
 
@@ -40,6 +41,26 @@ public class TestBoardController {
 		TestBoardDto board = service.get(id);
 		
 		model.addAttribute("board", board);
+	}
+	
+	@GetMapping("testModify")
+	public void modify(int id, Model model) {
+		TestBoardDto board = service.get(id);
+		model.addAttribute("board", board);
+	}
+	
+	@PostMapping("testModify")
+	public String modify(TestBoardDto board, RedirectAttributes rttr) {
+		
+		int cnt = service.update(board);
+		
+		if(cnt==1) {
+			System.out.println("수정완료");
+		} else {
+			System.out.println("수정 ㄴㄴ");
+		}
+		
+		return "redirect:/board/testList";
 	}
 }
 
