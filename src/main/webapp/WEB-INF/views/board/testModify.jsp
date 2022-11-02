@@ -14,6 +14,7 @@
 	<h1>${board.id}번 게시물 수정</h1>
 
 	<form action="" method="post">
+		<input type="hidden" name="id" value="${board.id }">
 		제목 <input type="text" value="${board.title }"> <br>
 		본문 <textarea>${board.content }</textarea> <br>
 		작성자 <input type="text" value="${board.writer }" readonly> <br>

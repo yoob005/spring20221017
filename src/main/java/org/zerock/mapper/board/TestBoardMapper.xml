@@ -20,11 +20,10 @@
 	</select>
 	
 	<update id="update">
-		UPDATE Board
+		UPDATE testBoard
 		SET 
 			title = #{title},
-			content = #{content},
-			writer = #{writer}
+			content = #{content}
 		WHERE
 			id = #{id}	
 	</update>
