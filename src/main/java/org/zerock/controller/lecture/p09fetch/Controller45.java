@@ -2,7 +2,10 @@ package org.zerock.controller.lecture.p09fetch;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -131,6 +134,58 @@ public class Controller45 {
 		data.setDateTime(LocalDateTime.now());
 		
 		return data;
+		
+	}
+	
+	
+	@GetMapping("sub12")
+	@ResponseBody
+	public String method12() {
+		return "헬로 월드";
+	}
+	
+	@GetMapping("sub13")
+	@ResponseBody
+	public Map<String, String> method13(){
+		Map<String, String> map = new HashMap<>();
+		map.put("address", "서울");
+		map.put("email", "abc@gmail.com");
+		map.put("age", "33");
+		return map;
+	}
+	
+	@GetMapping("sub14")
+	@ResponseBody
+	public Map<String, Object> method14(){
+		Map<String, Object> map = new HashMap<>();
+		JavaBean25 data = new JavaBean25();
+		JavaBean26 sub = new JavaBean26();
+		
+		sub.setAddress(List.of("제주", "울릉"));
+		sub.setMarried(false);
+		
+		data.setAge(99);
+		data.setInfo(null);
+		map.put("address", "부산");
+		map.put("age", 33);
+		map.put("married", true);
+		map.put("data", data);
+		return map;
+	}
+	
+	@GetMapping("sub15")
+	@ResponseBody
+	public Map<String, Object> method15(){
+		
+		Map<String, Object> map = new HashMap<>();
+		List<String> list = new ArrayList<String>();
+		list.add("blue");
+		list.add("red");
+		map.put("car", "tesla");
+		map.put("model", "avante");
+		map.put("color", list);
+		
+		return map;
 		
 	}
 	
