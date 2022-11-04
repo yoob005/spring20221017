@@ -13,5 +13,7 @@ public interface TestBoardMapper {
 	TestBoardDto select(int id);
 
 	int update(TestBoardDto board);
+	
+	int delete(TestBoardDto board);
 
 }

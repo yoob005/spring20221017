@@ -62,6 +62,20 @@ public class TestBoardController {
 		
 		return "redirect:/board/testList";
 	}
+	
+	@PostMapping("testRemove")
+	public String remove(TestBoardDto board, RedirectAttributes rttr) {
+		
+		int cnt = service.delete(board);
+		
+		if(cnt==1) {
+			System.out.println("삭제완료");
+		} else {
+			System.out.println("삭제 ㄴㄴ");
+		}
+		
+		return "redirect:/board/testList";
+	}
 }
 
 

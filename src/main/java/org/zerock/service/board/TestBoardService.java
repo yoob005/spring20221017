@@ -31,4 +31,8 @@ public class TestBoardService {
 		return mapper.update(board);
 	}
 	
+	public int delete(TestBoardDto board) {
+		return mapper.delete(board);
+	}
+	
 }
