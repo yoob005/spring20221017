@@ -15,14 +15,18 @@
 
 	<form action="" method="post">
 		<input type="hidden" name="id" value="${board.id }">
-		제목 <input type="text" value="${board.title }"> <br>
-		본문 <textarea>${board.content }</textarea> <br>
-		작성자 <input type="text" value="${board.writer }" readonly> <br>
+		제목 <input type="text" name="title" value="${board.title }"> <br>
+		본문 <textarea name="content">${board.content }</textarea> <br>
+		작성자 <input type="text" name="writer" value="${board.writer }" readonly> <br>
 		<input type="submit" value="수정하기">
 		
 	</form>
 	
-	<form action="" method="post" >
+	
+	<c:url value="/board/testRemove" var="removeLink">
+		<c:param name="id" value="${board.id }"></c:param>
+	</c:url>
+	<form action="${removeLink}" method="post" >
 		<input type="submit" value="삭제">
 	</form>
 	

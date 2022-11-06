@@ -53,7 +53,7 @@ public class TestBoardController {
 	public String modify(TestBoardDto board, RedirectAttributes rttr) {
 		
 		int cnt = service.update(board);
-		
+
 		if(cnt==1) {
 			System.out.println("수정완료");
 		} else {
