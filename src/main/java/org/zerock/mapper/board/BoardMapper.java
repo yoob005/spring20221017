@@ -20,4 +20,6 @@ public interface BoardMapper {
 
 	int searchCount();
 
+	int insertFile(int id, String fileName);
+
 }
