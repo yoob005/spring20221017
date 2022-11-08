@@ -11,4 +11,6 @@ public class BoardDto {
 	private String content;
 	private String writer;
 	private LocalDateTime inserted;
+	
+	private int countReply;
 }

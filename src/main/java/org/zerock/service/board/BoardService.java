@@ -75,7 +75,6 @@ public class BoardService {
 		// 게시물 지우기
 		return boardMapper.delete(id);
 	}
-	
 }
 
 
