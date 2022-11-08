@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix= "c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+	<my:testNavBar></my:testNavBar>
 	<h1>${board.id}번 게시물 조회</h1>
 	제목 <input class="form-control" type="text" value="${board.title }" readonly> <br>
 	본문 <textarea>${board.content }</textarea> <br>
 	작성자 <input type="text" value="${board.writer }" readonly> <br>
-	작성일시 <input type="datetime-local" value="${board.inserted }" readonly>
+	작성일시 <input type="datetime-local" value="${board.inserted }" readonly> <br>
 	
 	<c:url value="/board/testModify" var="modifyLink">
 		<c:param name="id" value="${board.id }"></c:param>

@@ -42,6 +42,28 @@
 			</c:forEach>
 		</tboady>
 	</table>
+	<!-- pagination -->
+	<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+ 	<c:if test="${pageInfo.currentPageNumber ne 1 }">  
+ 		<c:url value="/board/list" var="listLink">
+ 			<c:param name="page" value="1"/>
+ 		</c:url>
+    	<li class="page-item">
+      	<a class="page-link" href="${listLink }" aria-label="Previous">
+       	 <span aria-hidden="true">&laquo;</span>
+      	</a>
+    	</li>
+ 	</c:if>
+    
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

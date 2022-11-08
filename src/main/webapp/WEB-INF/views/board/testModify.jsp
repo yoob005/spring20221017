@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix= "c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+	<my:testNavBar></my:testNavBar>
 	<h1>${board.id}번 게시물 수정</h1>
 
 	<form action="" method="post">
@@ -19,9 +21,8 @@
 		본문 <textarea name="content">${board.content }</textarea> <br>
 		작성자 <input type="text" name="writer" value="${board.writer }" readonly> <br>
 		<input type="submit" value="수정하기">
-		
 	</form>
-	
+	<br>
 	
 	<c:url value="/board/testRemove" var="removeLink">
 		<c:param name="id" value="${board.id }"></c:param>
