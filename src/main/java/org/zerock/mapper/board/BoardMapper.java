@@ -21,5 +21,10 @@ public interface BoardMapper {
 	int searchCount();
 
 	int insertFile(int id, String fileName);
+	
+	int deleteFileByBoardId(int id);
+	
+	int deleteFileByBoardIdAndFileName(int id, String fileName);
+
 
 }
