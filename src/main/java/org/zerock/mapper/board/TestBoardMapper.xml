@@ -3,6 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="org.zerock.mapper.board.TestBoardMapper">
+
+	<select id="countAll" resultType="int">
+		SELECT COUNT(*)
+		FROM testBoard	
+	</select>
+
+
 	<insert id="insert">
 	  	INSERT testBoard(title, content, writer)
 	  	VALUES (#{title}, #{content}, #{writer})
@@ -10,7 +17,9 @@
 	
 	<select id="list" resultType="org.zerock.domain.board.TestBoardDto">
 		SELECT id, title, writer, inserted
-		FROM testBoard ORDER BY id DESC
+		FROM testBoard 
+		ORDER BY id DESC
+		LIMIT #{offset},${records}
 	</select>
 	
 	<select id="select" resultType="org.zerock.domain.board.TestBoardDto">

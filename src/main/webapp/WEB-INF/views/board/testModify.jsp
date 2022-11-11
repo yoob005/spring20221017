@@ -15,24 +15,92 @@
 	<my:testNavBar></my:testNavBar>
 	<h1>${board.id}번 게시물 수정</h1>
 
-	<form action="" method="post">
+	<form id="modifyForm" action="" method="post">
 		<input type="hidden" name="id" value="${board.id }">
-		제목 <input type="text" name="title" value="${board.title }"> <br>
-		본문 <textarea name="content">${board.content }</textarea> <br>
-		작성자 <input type="text" name="writer" value="${board.writer }" readonly> <br>
-		<input type="submit" value="수정하기">
+		<div class="mb-3">
+	  		<label class="form-label">
+				제목 
+	  		</label>
+	  		<input class="form-control" name="title" type="text" value="${board.title }" >   
+		</div>
+	
+		<div class="mb-3">
+			<label class="form-label">
+			본문 
+		  	</label>
+			<textarea rows="5" class="form-control" name="content" >${board.content }</textarea>
+		</div>
+	
+		<div class="mb-3">
+	  		<label class="form-label">
+				작성자  
+	  		</label>   
+			<input  class="form-control" name="writer" type="text" value="${board.writer }" readonly>
+		</div>		
+		
 	</form>
+	
+	<input type="submit" value="수정하기" data-bs-toggle="modal" 
+	data-bs-target="#modifyModal">
+	
 	<br>
 	
-	<c:url value="/board/testRemove" var="removeLink">
-		<c:param name="id" value="${board.id }"></c:param>
-	</c:url>
-	<form action="${removeLink}" method="post" >
-		<input type="submit" value="삭제">
+	<c:url value="/board/testRemove" var="removeLink"/>
+	<input type="submit" value="삭제" data-bs-toggle="modal" data-bs-target="#removeModal">
+	<form id="removeForm" action="${removeLink}" method="post" >
+		<input type="hidden" name="id" value="${board.id }">
 	</form>
 	
 	
+<!-- modify Modal -->
+<div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">수정 확인</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button id="modifyConfirmButton" type="button" class="btn btn-primary">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- remove Modal -->
+<div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">삭제 확인</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        삭제하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button id="removeConfirmButton" type="button" class="btn btn-primary">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+<script>
+	const ctx = "";
+	document.querySelector("#modifyConfirmButton").addEventListener("click", function(){
+		document.querySelector("#modifyForm").submit();
+	})
+	
+	document.querySelector("#removeConfirmButton").addEventListener("click", function(){
+		document.querySelector("#removeForm").submit();
+	})
+</script>
 </body>
 </html>

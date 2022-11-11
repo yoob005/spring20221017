@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.board.TestBoardDto;
+import org.zerock.domain.board.testPageInfo;
 import org.zerock.service.board.TestBoardService;
 
 @Controller
@@ -24,14 +26,26 @@ public class TestBoardController {
 	}
 	
 	@PostMapping("testRegister")
-	public String register(TestBoardDto board) {
+	public String register(TestBoardDto board, RedirectAttributes rttr) {
 		int cnt = service.register(board);
+
+		if(cnt==1) {
+			rttr.addFlashAttribute("message", "게시물이 작성되었습니다.");
+		} else {
+			rttr.addFlashAttribute("message", "게시물이 작성되지 않았습니다.");
+		}
+		
+		
 		return "redirect:/board/testList";
 	}
 	
 	@GetMapping("testList")
-	public void	list(Model model) {
-		List<TestBoardDto> list = service.listBoard();
+	public void	list(@RequestParam(name = "page", defaultValue = "1") int page, 
+			testPageInfo pageInfo,
+			Model model
+			){
+		
+		List<TestBoardDto> list = service.listBoard(page, pageInfo);
 		
 		model.addAttribute("boardList",list);
 	}
@@ -55,9 +69,9 @@ public class TestBoardController {
 		int cnt = service.update(board);
 
 		if(cnt==1) {
-			System.out.println("수정완료");
+			rttr.addFlashAttribute("message", "게시물이 수정되었습니다.");
 		} else {
-			System.out.println("수정 ㄴㄴ");
+			rttr.addFlashAttribute("message", "게시물이 수정되지 않았습니다.");
 		}
 		
 		return "redirect:/board/testList";
@@ -65,13 +79,13 @@ public class TestBoardController {
 	
 	@PostMapping("testRemove")
 	public String remove(TestBoardDto board, RedirectAttributes rttr) {
-		
-		int cnt = service.delete(board);
-		
+
+		int cnt = service.remove(board);
+
 		if(cnt==1) {
-			System.out.println("삭제완료");
+			rttr.addFlashAttribute("message", "게시물이 삭제되었습니다.");
 		} else {
-			System.out.println("삭제 ㄴㄴ");
+			rttr.addFlashAttribute("message", "게시물이 삭제되지 않았습니다.");
 		}
 		
 		return "redirect:/board/testList";
