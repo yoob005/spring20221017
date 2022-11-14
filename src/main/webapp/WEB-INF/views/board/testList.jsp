@@ -59,6 +59,7 @@
 				<div class="col">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
+					
 						<c:if test="${pageInfo.currentPageNumber ne 1 }">
 							<c:url value="/board/testList" var="listLink">
 								<c:param name="page" value="1" />
